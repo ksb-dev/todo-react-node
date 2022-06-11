@@ -1,15 +1,29 @@
 import React from 'react'
 
+// Context
+import { useTaskContext } from '../../context/context'
+
 const Navigation = () => {
+  const { tasks, category } = useTaskContext()
+
   return (
     <div className='navigation'>
       <ul>
-        <li>
-          All{' '}
-          <p>
-            <span>0</span>
-          </p>
-        </li>
+        {category === 'all' ? (
+          <li className='active'>
+            All{' '}
+            <p className='active-number'>
+              <span>{tasks.length}</span>
+            </p>
+          </li>
+        ) : (
+          <li>
+            All{' '}
+            <p>
+              <span>{tasks.length}</span>
+            </p>
+          </li>
+        )}
         <li>
           Pending{' '}
           <p>

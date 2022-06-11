@@ -16,6 +16,8 @@ const createTask = asyncError(async (req, res) => {
     req.body.added_date = year + '-' + month + '-' + day
   }
 
+  if (req.body.task_priority === '') req.body.task_priority = 'low'
+
   const task = await Task.create(req.body)
   res.status(201).json({ task })
 })
