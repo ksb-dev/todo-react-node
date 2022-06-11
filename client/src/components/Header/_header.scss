@@ -21,7 +21,7 @@
     justify-content: space-around;
 
     h1 {
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       color: #0d253f;
       animation: blink 3s infinite ease;
     }
@@ -35,8 +35,8 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        border: 3px solid #90cea1;
         margin-left: 2rem;
+        box-shadow: 0 0 20px #90cea1;
       }
     }
   }
@@ -224,24 +224,6 @@
     }
   }
 }
-
-// @keyframes blink {
-//   0% {
-//     text-shadow: 0 0 20px #90cea1;
-//   }
-//   25% {
-//     text-shadow: 0 0 5px #90cea1;
-//   }
-//   50% {
-//     text-shadow: 0 0 20px #90cea1;
-//   }
-//   70% {
-//     text-shadow: 0 0 5px #90cea1;
-//   }
-//   100% {
-//     text-shadow: 0 0 20px #90cea1;
-//   }
-// }
 
 @keyframes blink {
   0%,

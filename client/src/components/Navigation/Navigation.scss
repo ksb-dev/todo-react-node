@@ -15,9 +15,9 @@
       font-size: 1rem;
       font-weight: 500;
       letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 0.2rem 0.5rem;
-      padding-right: 0.2rem;
+      text-transform: capitalize;
+      padding: 4px 10px;
+      padding-right: 5px;
       transition: all 0.3s ease;
       border-radius: 50px;
 
@@ -29,12 +29,12 @@
         margin: 0;
         padding: 0;
         margin-left: 0.5rem;
-        background: #90cea1;
-        color: #0d253f;
         height: 30px;
         width: 30px;
         border-radius: 50px;
         position: relative;
+        background: #90cea1;
+        color: #0d253f;
 
         span {
           position: absolute;
@@ -46,18 +46,26 @@
     }
 
     li:hover {
-      box-shadow: 0 0 5px #90cea1;
+      text-shadow: 0 0 20px #90cea1;
     }
   }
 }
 
+@keyframes blink {
+  0% {
+    transform: scale(0.8);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 .active {
-  background: #90cea1;
-  color: #0d253f;
+  color: #fff;
   pointer-events: none;
 }
 
 .active-number {
-  background: #0d253f !important;
-  color: #90cea1 !important;
+  background: #fff !important;
 }
