@@ -6,6 +6,8 @@ const AppContext = React.createContext()
 const AppProvider = ({ children }) => {
   const [error, setError] = useState('')
   const [tasks, setTasks] = useState([])
+  const [pending, setPending] = useState([])
+  const [completed, setCompleted] = useState([])
   const [loading, setLoading] = useState(false)
   const [category, setCategory] = useState('all')
 
@@ -23,6 +25,19 @@ const AppProvider = ({ children }) => {
 
       if (response.data.tasks) {
         setTasks(response.data.tasks)
+
+        const completedTasks = response.data.tasks.filter(
+          task => task.is_completed === true
+        )
+
+        setCompleted(completedTasks)
+
+        const pendingTasks = response.data.tasks.filter(
+          task => task.is_completed === false
+        )
+
+        setPending(pendingTasks)
+
         setLoading(false)
         setError('')
       } else {
@@ -62,7 +77,11 @@ const AppProvider = ({ children }) => {
         taskPriority,
         setTaskPriority,
         taskDate,
-        setTaskDate
+        setTaskDate,
+        completed,
+        setCompleted,
+        pending,
+        setPending
       }}
     >
       {children}

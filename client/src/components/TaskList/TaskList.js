@@ -10,9 +10,8 @@ import { deleteTask } from '../../hooks/useDeleteTask'
 // Components
 import EditTask from '../EditTask/EditTask'
 
-const TaskList = () => {
+const TaskList = ({ tasks }) => {
   const {
-    tasks,
     getTasks,
     setError,
     setTaskId,

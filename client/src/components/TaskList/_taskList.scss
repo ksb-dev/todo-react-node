@@ -1,5 +1,15 @@
 .error {
-  margin-top: 15rem;
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, 0);
+  background: tomato;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  letter-spacing: 1px;
+  border-radius: 3px;
 }
 
 .task-list {

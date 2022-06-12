@@ -7,15 +7,15 @@ import { useTaskContext } from '../../context/context'
 import Header from '../../components/Header/Header'
 import TaskList from '../../components/TaskList/TaskList'
 
-const Home = () => {
-  const { tasks } = useTaskContext()
+const Completed = () => {
+  const { completed } = useTaskContext()
 
   return (
     <div className='home'>
       <Header />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={completed} />
     </div>
   )
 }
 
-export default Home
+export default Completed
