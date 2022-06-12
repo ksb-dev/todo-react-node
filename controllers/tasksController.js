@@ -36,6 +36,20 @@ const getTask = asyncError(async (req, res, next) => {
 const updateTask = asyncError(async (req, res, next) => {
   const { id: taskID } = req.params
 
+  if (req.body.task_name === '') {
+    return next(new CustomAPIError('Please provide task name', 404))
+  }
+
+  if (req.body.added_date === '') {
+    const year = new Date().getFullYear()
+    const month = new Date().getMonth() + 1
+    const day = new Date().getDate() + 1
+
+    req.body.added_date = year + '-' + month + '-' + day
+  }
+
+  if (req.body.task_priority === '') req.body.task_priority = 'low'
+
   const task = await Task.findOneAndUpdate({ _id: taskID }, req.body, {
     new: true,
     runValidators: true

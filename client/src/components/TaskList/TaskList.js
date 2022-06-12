@@ -4,14 +4,24 @@ import React, { useState, useRef } from 'react'
 import { useTaskContext } from '../../context/context'
 
 // Hooks
-import { updateTask } from '../../hooks/useUpdateTask'
+import { updateComplete } from '../../hooks/useUpdateComplete'
 import { deleteTask } from '../../hooks/useDeleteTask'
 
 // Components
 import EditTask from '../EditTask/EditTask'
 
 const TaskList = () => {
-  const { tasks, getTasks, setError, setTaskId, setTaskName } = useTaskContext()
+  const {
+    tasks,
+    getTasks,
+    setError,
+    setTaskId,
+    setTaskName,
+    setTaskCompleted,
+    setTaskPriority,
+    setTaskDate,
+    error
+  } = useTaskContext()
 
   const editTask = useRef(null)
 
@@ -21,9 +31,12 @@ const TaskList = () => {
     if (value === 'high') return 'red'
   }
 
-  const showEdit = (id, name) => {
+  const showEdit = (id, name, completed, priority, date) => {
     setTaskId(id)
     setTaskName(name)
+    setTaskCompleted(completed)
+    setTaskPriority(priority)
+    setTaskDate(date)
 
     editTask.current.style.zIndex = '1'
     editTask.current.style.transform = 'scale(1)'
@@ -31,6 +44,8 @@ const TaskList = () => {
 
   return (
     <>
+      {error && <h4 className='error'>{error}</h4>}
+
       <EditTask editTask={editTask} />
 
       <div className='task-list'>
@@ -42,7 +57,7 @@ const TaskList = () => {
                   <i
                     className='fa-regular fa-circle'
                     onClick={() =>
-                      updateTask(task._id, getTasks, setError, true)
+                      updateComplete(task._id, getTasks, setError, true)
                     }
                   ></i>
                 </span>
@@ -53,7 +68,7 @@ const TaskList = () => {
                   <i
                     className='fa-solid fa-circle-check'
                     onClick={() =>
-                      updateTask(task._id, getTasks, setError, false)
+                      updateComplete(task._id, getTasks, setError, false)
                     }
                   ></i>
                 </span>
@@ -74,7 +89,15 @@ const TaskList = () => {
               <div className='third__inner'>
                 <i
                   className='fa-solid fa-pen-to-square edit'
-                  onClick={() => showEdit(task._id, task.task_name)}
+                  onClick={() =>
+                    showEdit(
+                      task._id,
+                      task.task_name,
+                      task.is_completed,
+                      task.task_priority,
+                      task.added_date.substring(0, 10)
+                    )
+                  }
                 ></i>
                 <i
                   className='fa-solid fa-trash delete'

@@ -25,7 +25,7 @@ const Header = () => {
     addTask(input, priority, date, getTasks, setError)
     setInput('')
     setDate('')
-    setPriority('')
+    setPriority('Priority')
   }
 
   return (
@@ -61,7 +61,7 @@ const Header = () => {
             className='priority-box'
             onChange={e => setPriority(e.target.value)}
           >
-            <option value='low'>Priority</option>
+            <option value='low'>priority</option>
             <option value='low'>Low</option>
             <option value='medium'>Medium</option>
             <option value='high'>High</option>

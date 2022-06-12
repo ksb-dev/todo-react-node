@@ -5,13 +5,15 @@ const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
   const [error, setError] = useState('')
-  const [loadTaskError, setLoadTaskError] = useState('')
   const [tasks, setTasks] = useState([])
   const [loading, setLoading] = useState(false)
   const [category, setCategory] = useState('all')
 
   const [taskId, setTaskId] = useState('')
   const [taskName, setTaskName] = useState('')
+  const [taskCompleted, setTaskCompleted] = useState(false)
+  const [taskPriority, setTaskPriority] = useState('')
+  const [taskDate, setTaskDate] = useState('')
 
   const getTasks = async () => {
     setLoading(true)
@@ -22,16 +24,16 @@ const AppProvider = ({ children }) => {
       if (response.data.tasks) {
         setTasks(response.data.tasks)
         setLoading(false)
-        setLoadTaskError('')
+        setError('')
       } else {
         setTasks([])
         setLoading(false)
-        setLoadTaskError('Failed to fetch tasks!')
+        setError('Failed to fetch tasks!')
       }
     } catch (error) {
       setTasks([])
       setLoading(false)
-      setLoadTaskError('Failed to fetch tasks!')
+      setError('Failed to fetch tasks!')
     }
   }
 
@@ -49,14 +51,18 @@ const AppProvider = ({ children }) => {
         setTasks,
         loading,
         setLoading,
-        loadTaskError,
-        setLoadTaskError,
         category,
         setCategory,
         taskId,
         setTaskId,
         taskName,
-        setTaskName
+        setTaskName,
+        taskCompleted,
+        setTaskCompleted,
+        taskPriority,
+        setTaskPriority,
+        taskDate,
+        setTaskDate
       }}
     >
       {children}

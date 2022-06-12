@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const addTask = async (name, priority, date, getTasks, setError) => {
+export const updateComplete = async (id, getTasks, setError, boolean) => {
   window.scroll({
     bottom: 0,
     left: 0,
@@ -8,10 +8,8 @@ export const addTask = async (name, priority, date, getTasks, setError) => {
   })
 
   try {
-    const response = await axios.post('/api/v1/tasks', {
-      task_name: name,
-      added_date: date,
-      task_priority: priority
+    let response = await axios.patch(`/api/v1/tasks/${id}`, {
+      is_completed: `${boolean}`
     })
 
     if (response.data) {
@@ -19,7 +17,7 @@ export const addTask = async (name, priority, date, getTasks, setError) => {
       getTasks()
     }
   } catch (error) {
-    setError(error.response.data.msg.substring(35))
+    setError(error.response.data.msg)
 
     setTimeout(() => {
       setError('')
