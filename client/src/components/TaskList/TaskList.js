@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 
 // Context
 import { useTaskContext } from '../../context/context'
@@ -7,8 +7,13 @@ import { useTaskContext } from '../../context/context'
 import { updateTask } from '../../hooks/useUpdateTask'
 import { deleteTask } from '../../hooks/useDeleteTask'
 
+// Components
+import EditTask from '../EditTask/EditTask'
+
 const TaskList = () => {
-  const { tasks, getTasks, setError } = useTaskContext()
+  const { tasks, getTasks, setError, setTaskId, setTaskName } = useTaskContext()
+
+  const editTask = useRef(null)
 
   const getClass = value => {
     if (value === 'low') return 'green'
@@ -16,54 +21,71 @@ const TaskList = () => {
     if (value === 'high') return 'red'
   }
 
+  const showEdit = (id, name) => {
+    setTaskId(id)
+    setTaskName(name)
+
+    editTask.current.style.zIndex = '1'
+    editTask.current.style.transform = 'scale(1)'
+  }
+
   return (
-    <div className='task-list'>
-      {tasks.map(task => (
-        <div key={task._id} className='task-list__task'>
-          <div className='one'>
-            {!task.is_completed && (
-              <span className='pending'>
-                <i
-                  className='fa-regular fa-circle'
-                  onClick={() => updateTask(task._id, getTasks, setError, true)}
-                ></i>
+    <>
+      <EditTask editTask={editTask} />
+
+      <div className='task-list'>
+        {tasks.map(task => (
+          <div key={task._id} className='task-list__task'>
+            <div className='one'>
+              {!task.is_completed && (
+                <span className='pending'>
+                  <i
+                    className='fa-regular fa-circle'
+                    onClick={() =>
+                      updateTask(task._id, getTasks, setError, true)
+                    }
+                  ></i>
+                </span>
+              )}
+
+              {task.is_completed && (
+                <span className='completed'>
+                  <i
+                    className='fa-solid fa-circle-check'
+                    onClick={() =>
+                      updateTask(task._id, getTasks, setError, false)
+                    }
+                  ></i>
+                </span>
+              )}
+
+              <span className={`${getClass(task.task_priority)} priority`}>
+                {task.task_priority}
               </span>
-            )}
+            </div>
 
-            {task.is_completed && (
-              <span className='completed'>
+            <div className='second'>
+              <span className='name'>{task.task_name}</span>
+            </div>
+
+            <div className='third'>
+              <span className='date'>{task.added_date.substring(0, 10)}</span>
+
+              <div className='third__inner'>
                 <i
-                  class='fa-solid fa-circle-check'
-                  onClick={() =>
-                    updateTask(task._id, getTasks, setError, false)
-                  }
+                  className='fa-solid fa-pen-to-square edit'
+                  onClick={() => showEdit(task._id, task.task_name)}
                 ></i>
-              </span>
-            )}
-
-            <span className={`${getClass(task.task_priority)} priority`}>
-              {task.task_priority}
-            </span>
-          </div>
-
-          <div className='second'>
-            <span className='name'>{task.task_name}</span>
-          </div>
-
-          <div className='third'>
-            <span className='date'>{task.added_date.substring(0, 10)}</span>
-
-            <div className='third__inner'>
-              <i className='fa-solid fa-pen-to-square edit'></i>
-              <i
-                className='fa-solid fa-trash delete'
-                onClick={() => deleteTask(task._id, getTasks, setError)}
-              ></i>
+                <i
+                  className='fa-solid fa-trash delete'
+                  onClick={() => deleteTask(task._id, getTasks, setError)}
+                ></i>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   )
 }
 

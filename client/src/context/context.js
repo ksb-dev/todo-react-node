@@ -10,7 +10,8 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false)
   const [category, setCategory] = useState('all')
 
-  console.log(tasks)
+  const [taskId, setTaskId] = useState('')
+  const [taskName, setTaskName] = useState('')
 
   const getTasks = async () => {
     setLoading(true)
@@ -51,7 +52,11 @@ const AppProvider = ({ children }) => {
         loadTaskError,
         setLoadTaskError,
         category,
-        setCategory
+        setCategory,
+        taskId,
+        setTaskId,
+        taskName,
+        setTaskName
       }}
     >
       {children}

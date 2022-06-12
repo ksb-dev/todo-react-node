@@ -6,8 +6,8 @@
   justify-content: center;
   padding: 2rem;
   padding-bottom: 0rem;
-  background: #0d253f;
-  color: #90cea1;
+  background: var(--primary);
+  color: var(--secondary);
 
   &__image__other {
     width: 100%;
@@ -22,7 +22,8 @@
 
     h1 {
       letter-spacing: 2px;
-      color: #0d253f;
+      color: var(--primary);
+      text-shadow: 0 0 20px var(--secondary);
       animation: blink 3s infinite ease;
     }
 
@@ -36,7 +37,7 @@
         height: 100px;
         border-radius: 50%;
         margin-left: 2rem;
-        box-shadow: 0 0 20px #90cea1;
+        box-shadow: 0 0 20px var(--secondary);
       }
     }
   }
@@ -79,8 +80,8 @@
           right: 0;
           margin: 0;
           padding: 0 1rem;
-          background: #90cea1;
-          color: #0d253f;
+          background: var(--secondary);
+          color: var(--primary);
           height: 100%;
           width: 20px;
           cursor: pointer;
@@ -99,7 +100,7 @@
         }
 
         .addBtn:hover {
-          background: #75b386;
+          background: var(--hover);
         }
       }
 
@@ -109,7 +110,7 @@
         border: none;
         letter-spacing: 1px;
         font-size: 1rem;
-        color: #0d253f;
+        color: var(--primary);
         font-family: inherit;
         font-weight: 500;
         border-radius: 3px;
@@ -126,7 +127,7 @@
           font-size: 1rem;
           letter-spacing: 1px;
           border: none;
-          color: #0d253f;
+          color: var(--primary);
           font-family: inherit;
           font-weight: 500;
           border-radius: 3px;
@@ -163,8 +164,8 @@
         right: 0;
         margin: 0;
         padding: 0 1rem;
-        background: #90cea1;
-        color: #0d253f;
+        background: var(--secondary);
+        color: var(--primary);
         height: 100%;
         width: 20px;
         cursor: pointer;
@@ -183,7 +184,7 @@
       }
 
       .filterBtn:hover {
-        background: #75b386;
+        background: var(--hover);
       }
     }
   }
@@ -194,7 +195,7 @@
 }
 
 ::placeholder {
-  color: #0d253f;
+  color: var(--primary);
   letter-spacing: 1px;
   font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
@@ -236,7 +237,7 @@
   90.1%,
   92% {
     color: #0e3742;
-    text-shadow: none;
+    /*text-shadow: none;*/
   }
   18.1%,
   20.1%,
@@ -248,8 +249,8 @@
   90%,
   92.1%,
   100% {
-    color: #90cea1;
-    text-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4,
-      0 0 40px #03bcf4 0 0 80px #03bcf4 0 0 160px #03bcf4;
+    color: var(--secondary);
+    /*text-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4,
+      0 0 40px #03bcf4 0 0 80px #03bcf4 0 0 160px #03bcf4;*/
   }
 }
