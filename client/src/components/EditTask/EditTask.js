@@ -53,33 +53,50 @@ const EditForm = ({ editTask }) => {
           onClick={hideEdit}
         ></i>
 
-        <form className='edit-task__inner__box' onSubmit={e => handleSubmit(e)}>
-          <input
-            type='text'
-            className='input'
-            placeholder='Add todo...'
-            onChange={e => setInput(e.target.value)}
-            value={input}
-          />
+        <form
+          id='task'
+          className='edit-task__inner__box'
+          onSubmit={e => handleSubmit(e)}
+        >
+          <div className='edit-task__inner__box__one'>
+            <label htmlFor='task'>Name</label>
+            <input
+              type='text'
+              className='input'
+              placeholder='Add todo...'
+              onChange={e => setInput(e.target.value)}
+              value={input}
+            />
+          </div>
 
-          <input
-            type='text'
-            className='input date'
-            placeholder='Add todo...'
-            onChange={e => setDate(e.target.value)}
-            value={date}
-          />
+          <div className='edit-task__inner__box__two'>
+            <label htmlFor='date'>Date</label>
 
-          <input
-            type='text'
-            className='input priority'
-            placeholder='Add todo...'
-            onChange={e => setPriority(e.target.value)}
-            value={priority}
-          />
+            <input
+              id='date'
+              type='text'
+              className='input date'
+              placeholder='Add todo...'
+              onChange={e => setDate(e.target.value)}
+              value={date}
+            />
+          </div>
+
+          <div className='edit-task__inner__box__three'>
+            <label htmlFor='priority'>Priority</label>
+
+            <input
+              id='priority'
+              type='text'
+              className='input priority'
+              placeholder='Add todo...'
+              onChange={e => setPriority(e.target.value)}
+              value={priority}
+            />
+          </div>
 
           <button type='submit' onSubmit={e => handleSubmit(e)}>
-            submit
+            Submit
           </button>
         </form>
       </div>
