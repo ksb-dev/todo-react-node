@@ -59,8 +59,12 @@
 .active {
   color: #fff !important;
   pointer-events: none;
+  font-size: 1.2rem !important;
 }
 
 .active-number {
   background: #fff !important;
+  height: 35px !important;
+  width: 35px !important;
+  font-size: 1.4rem !important;
 }
