@@ -1,4 +1,5 @@
 .header {
+  position: fixed;
   max-width: 1280px;
   display: flex;
   flex-direction: column;
@@ -8,6 +9,8 @@
   padding-bottom: 0rem;
   background: var(--primary);
   color: var(--secondary);
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
 
   &__image__other {
     width: 100%;

@@ -54,7 +54,7 @@ const TaskList = ({ tasks }) => {
               {!task.is_completed && (
                 <span className='pending'>
                   <i
-                    className='fa-regular fa-circle'
+                    className='fa-regular fa-square'
                     onClick={() =>
                       updateComplete(task._id, getTasks, setError, true)
                     }
@@ -65,7 +65,7 @@ const TaskList = ({ tasks }) => {
               {task.is_completed && (
                 <span className='completed'>
                   <i
-                    className='fa-solid fa-circle-check'
+                    className='fa-solid fa-square-check'
                     onClick={() =>
                       updateComplete(task._id, getTasks, setError, false)
                     }
@@ -83,7 +83,13 @@ const TaskList = ({ tasks }) => {
             </div>
 
             <div className='third'>
-              <span className='date'>{task.added_date.substring(0, 10)}</span>
+              <span className='date'>
+                {task.added_date.substring(8, 10) +
+                  '-' +
+                  task.added_date.substring(5, 7) +
+                  '-' +
+                  task.added_date.substring(0, 4)}
+              </span>
 
               <div className='third__inner'>
                 <i
