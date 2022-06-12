@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { useTaskContext } from '../../context/context'
 
 const Navigation = () => {
-  const { tasks, pending, completed, category } = useTaskContext()
+  const { tasks, pending, completed, upcoming } = useTaskContext()
 
   return (
     <div className='navigation'>
@@ -77,7 +77,7 @@ const Navigation = () => {
             <li className='active'>
               Upcoming{' '}
               <p className='active-number'>
-                <span>{tasks.length}</span>
+                <span>{upcoming.length}</span>
               </p>
             </li>
           </Link>
@@ -86,7 +86,7 @@ const Navigation = () => {
             <li>
               Upcoming{' '}
               <p>
-                <span>{tasks.length}</span>
+                <span>{upcoming.length}</span>
               </p>
             </li>
           </Link>

@@ -68,7 +68,6 @@ const Header = () => {
             className='priority-box'
             onChange={e => setPriority(e.target.value)}
           >
-            <option value='low'>priority</option>
             <option value='low'>Low</option>
             <option value='medium'>Medium</option>
             <option value='high'>High</option>

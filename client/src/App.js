@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Completed from './pages/Completed/Completed'
 import Pending from './pages/Pending/Pending'
+import Upcoming from './pages/Uocoming/Upcoming'
 
 // Styles
 import './styles/main.scss'
@@ -19,6 +20,8 @@ const App = () => {
           <Route exact path='/completed' element={<Completed />} />
 
           <Route exact path='/pending' element={<Pending />} />
+
+          <Route exact path='/upcoming' element={<Upcoming />} />
         </Routes>
       </BrowserRouter>
     </div>
