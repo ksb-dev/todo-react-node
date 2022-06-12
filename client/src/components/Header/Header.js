@@ -17,7 +17,14 @@ const Header = () => {
   const [date, setDate] = useState('')
   const [priority, setPriority] = useState('')
 
-  const { getTasks, error, setError, loadTaskError } = useTaskContext()
+  const {
+    getTasks,
+    error,
+    setError,
+    loadTaskError,
+    tasks,
+    completed
+  } = useTaskContext()
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -33,8 +40,8 @@ const Header = () => {
       <div className='header__image__other'>
         <h1>Taskivity</h1>
         <div>
-          <p>progress bar</p>
           <img src={user} alt='user' />
+          <h2>{((completed.length / tasks.length) * 100).toFixed(1) + '%'}</h2>
         </div>
       </div>
 

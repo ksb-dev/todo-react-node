@@ -105,7 +105,7 @@ const TaskList = ({ tasks }) => {
                   }
                 ></i>
                 <i
-                  className='fa-solid fa-trash delete'
+                  className='fa-solid fa-trash-can delete'
                   onClick={() => deleteTask(task._id, getTasks, setError)}
                 ></i>
               </div>
