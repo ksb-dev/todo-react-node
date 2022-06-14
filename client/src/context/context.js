@@ -57,14 +57,6 @@ const AppProvider = ({ children }) => {
           let nowMonth = new Date().getMonth()
           let nowDay = new Date().getDate()
 
-          console.log(year, nowYear)
-          console.log(year >= nowYear)
-          console.log(newMonth, nowMonth + 1)
-          console.log(newMonth >= nowMonth + 1)
-          console.log(newDay, nowDay)
-          console.log(newDay > nowDay)
-          console.log('-----------------')
-
           if (newDay < nowDay && newMonth > nowMonth && year >= nowYear) {
             return task
           }

@@ -49,16 +49,17 @@ const EditForm = ({ editTask }) => {
     <div className='edit-task' ref={editTask}>
       <div className='edit-task__inner'>
         <i
-          className='fa-solid fa-circle-xmark fa-3x edit-task__inner-close'
+          className='fa-solid fa-xmark fa-3x edit-task__inner-close'
           onClick={hideEdit}
         ></i>
-
         <form
           id='task'
           className='edit-task__inner__box'
           onSubmit={e => handleSubmit(e)}
         >
           <div className='edit-task__inner__box__one'>
+            <h2 className='heading'>Edit Todo</h2>
+
             <label htmlFor='task'>Name</label>
             <input
               type='text'

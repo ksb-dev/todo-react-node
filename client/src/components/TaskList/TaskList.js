@@ -54,6 +54,70 @@ const TaskList = ({ tasks }) => {
               {!task.is_completed && (
                 <span className='pending'>
                   <i
+                    className='fa-regular fa-circle fa-2x'
+                    onClick={() =>
+                      updateComplete(task._id, getTasks, setError, true)
+                    }
+                  ></i>
+                </span>
+              )}
+
+              {task.is_completed && (
+                <span className='completed'>
+                  <i
+                    className='fa-solid fa-circle-check fa-2x'
+                    onClick={() =>
+                      updateComplete(task._id, getTasks, setError, false)
+                    }
+                  ></i>
+                </span>
+              )}
+
+              <span className={`${getClass(task.task_priority)} priority`}>
+                {task.task_priority}
+              </span>
+
+              <span className='name'>{task.task_name}</span>
+            </div>
+
+            <div className='two'>
+              <span className='date'>
+                {task.added_date.substring(8, 10) +
+                  '-' +
+                  task.added_date.substring(5, 7) +
+                  '-' +
+                  task.added_date.substring(0, 4)}
+              </span>
+
+              <i
+                className='fa-solid fa-pen-to-square edit'
+                onClick={() =>
+                  showEdit(
+                    task._id,
+                    task.task_name,
+                    task.is_completed,
+                    task.task_priority,
+                    task.added_date.substring(0, 10)
+                  )
+                }
+              ></i>
+
+              <i
+                className='fa-solid fa-trash-can delete'
+                onClick={() => deleteTask(task._id, getTasks, setError)}
+              ></i>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/*<div className='task-list'>
+        {tasks.map(task => (
+          <div key={task._id} className='task-list__task'>
+            <div className='one'>
+              {!task.is_completed && (
+                <span className='pending'>
+                  <i
                     className='fa-regular fa-square'
                     onClick={() =>
                       updateComplete(task._id, getTasks, setError, true)
@@ -112,7 +176,7 @@ const TaskList = ({ tasks }) => {
             </div>
           </div>
         ))}
-      </div>
+                </div>*/}
     </>
   )
 }

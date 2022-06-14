@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 
 // Context
 import { useTaskContext } from '../../context/context'
@@ -8,6 +8,7 @@ import { addTask } from '../../hooks/useAddTask'
 
 // Components
 import Navigation from '../Navigation/Navigation'
+import AddTask from '../AddTask/AddTask'
 
 // Images
 import user from '../../img/user.png'
@@ -17,14 +18,9 @@ const Header = () => {
   const [date, setDate] = useState('')
   const [priority, setPriority] = useState('')
 
-  const {
-    getTasks,
-    error,
-    setError,
-    loadTaskError,
-    tasks,
-    completed
-  } = useTaskContext()
+  const { getTasks, setError, tasks, completed } = useTaskContext()
+
+  const addTask = useRef(null)
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -32,21 +28,34 @@ const Header = () => {
     addTask(input, priority, date, getTasks, setError)
     setInput('')
     setDate('')
-    setPriority('Priority')
+    setPriority('')
+  }
+
+  const showAddTask = () => {
+    addTask.current.style.zIndex = '1'
+    addTask.current.style.transform = 'scale(1)'
   }
 
   return (
-    <div className='header'>
-      <div className='header__image__other'>
-        <h1>Taskivity</h1>
-        <div>
-          <img src={user} alt='user' />
-          <h2>{((completed.length / tasks.length) * 100).toFixed(1) + '%'}</h2>
-        </div>
-      </div>
+    <>
+      <AddTask addTask={addTask} />
 
-      <div className='header__input__date_filter'>
-        <div className='input-date'>
+      <div className='header'>
+        <div className='header__image__progress'>
+          <h1>Taskivity</h1>
+          <div>
+            <img src={user} alt='user' />
+            <h2>
+              {((completed.length / tasks.length) * 100).toFixed(1) + '%'}
+            </h2>
+          </div>
+        </div>
+
+        <div className='header__create_filter'>
+          <button className='createBtn' onClick={showAddTask}>
+            create todo <i className='fa-solid fa-plus'></i>
+          </button>
+          {/*<div className='input-date'>
           <form className='input-box' onSubmit={handleSubmit}>
             <input
               type='text'
@@ -76,22 +85,23 @@ const Header = () => {
           <form className='date-box'>
             <input type='date' onSelect={e => setDate(e.target.value)} />
           </form>
+  </div>*/}
+
+          <form className='filter-box'>
+            <input type='text' className='input' placeholder='Filter todo...' />
+            <p className='filterBtn'>
+              <span>
+                <i className='fa-solid fa-filter'></i>
+              </span>
+            </p>
+          </form>
         </div>
 
-        <form className='filter-box'>
-          <input type='text' className='input' placeholder='Filter todo...' />
-          <p className='filterBtn'>
-            <span>
-              <i className='fa-solid fa-filter'></i>
-            </span>
-          </p>
-        </form>
+        <div className='header__navigation'>
+          <Navigation />
+        </div>
       </div>
-
-      <div className='header__navigation'>
-        <Navigation />
-      </div>
-    </div>
+    </>
   )
 }
 

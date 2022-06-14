@@ -11,7 +11,7 @@
   border-radius: 3px;
   border-top: 10px solid var(--secondary);
 
-  &__image__other {
+  &__image__progress {
     width: 100%;
     display: flex;
     flex-direction: row-reverse;
@@ -44,112 +44,35 @@
     }
   }
 
-  &__input__date_filter {
+  &__create_filter {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
     margin: 2rem 0 2rem 0;
 
-    .input-date {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .createBtn {
+      font-family: inherit;
+      border: none;
+      outline: none;
+      padding: 0.65rem;
+      border-radius: var(--border-radius);
+      background: var(--secondary);
+      color: var(--primary);
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 1rem;
+    }
 
-      .input-box {
-        position: relative;
-        margin-right: 1rem;
-
-        .input {
-          width: 235px;
-          padding: 0.7rem;
-          padding-right: 65px;
-          border: none;
-          border-radius: 3px;
-          font-size: 1rem;
-          font-weight: 500;
-          letter-spacing: 1px;
-        }
-
-        .input:focus {
-          outline: none;
-          box-shadow: 0 0 20px var(--secondary);
-        }
-
-        .input:focus::placeholder {
-          color: transparent;
-        }
-
-        .addBtn {
-          position: absolute;
-          top: 0;
-          right: 0;
-          margin: 0;
-          padding: 0 1rem;
-          background: var(--secondary);
-          color: var(--primary);
-          height: 100%;
-          width: 20px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          border-top-right-radius: 3px;
-          border-bottom-right-radius: 3px;
-
-          span {
-            position: absolute;
-            display: inline-block;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 1.5rem;
-          }
-        }
-
-        .addBtn:hover {
-          background: var(--hover);
-        }
-      }
-
-      .priority-box {
-        margin-right: 1rem;
-        padding: 0.6rem;
-        border: none;
-        letter-spacing: 1px;
-        font-size: 1rem;
-        color: var(--primary);
-        font-family: inherit;
-        font-weight: 500;
-        border-radius: 3px;
-      }
-
-      .priority-box:focus {
-        outline: none;
-        box-shadow: 0 0 20px var(--secondary);
-      }
-
-      .date-box {
-        input {
-          padding: 0.6rem;
-          text-transform: uppercase;
-          font-size: 1rem;
-          letter-spacing: 1px;
-          border: none;
-          color: var(--primary);
-          font-family: inherit;
-          font-weight: 500;
-          border-radius: 3px;
-        }
-
-        input:focus {
-          outline: none;
-          box-shadow: 0 0 20px var(--secondary);
-        }
-      }
+    .createBtn:hover {
+      background: var(--hover);
     }
 
     .filter-box {
       position: relative;
-      margin-right: 2rem;
 
       .input {
         width: 300px;
@@ -160,7 +83,7 @@
 
       .input:focus {
         outline: none;
-        box-shadow: 0 0 20px var(--secondary);
+        box-shadow: 0 0 10px var(--secondary);
       }
 
       .input:focus::placeholder {

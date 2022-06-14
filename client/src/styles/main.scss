@@ -3,6 +3,7 @@
 @import '../components/Navigation/Navigation.scss';
 @import '../components/TaskList/taskList';
 @import '../components/EditTask/editTask';
+@import '../components/AddTask/addTask';
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
 
@@ -17,6 +18,10 @@
   --hover1: #143961;
 
   --box-shadow: 0 0 10px #90cea1;
+
+  --border-radius: 3px;
+
+  --transition: all 0.3s ease;
 }
 
 body {
