@@ -82,6 +82,8 @@ const TaskList = ({ tasks }) => {
                   </span>
                 )}
 
+                <i class='fa-solid fa-circle-info fa-2x info'></i>
+
                 <i
                   className='fa-solid fa-pen-to-square edit'
                   onClick={() =>
