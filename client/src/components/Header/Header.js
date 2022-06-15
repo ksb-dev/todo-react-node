@@ -1,35 +1,19 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 
 // Context
 import { useTaskContext } from '../../context/context'
 
-// Hooks
-import { addTask } from '../../hooks/useAddTask'
-
 // Components
 import Navigation from '../Navigation/Navigation'
-import AddTask from '../AddTask/AddTask'
+import CreateTodo from '../CreateTodo/CreateTodo'
 
 // Images
 import user from '../../img/user.png'
 
 const Header = () => {
-  const [input, setInput] = useState('')
-  const [date, setDate] = useState('')
-  const [priority, setPriority] = useState('')
-
-  const { getTasks, setError, tasks, completed } = useTaskContext()
+  const { tasks, completed } = useTaskContext()
 
   const addForm = useRef(null)
-
-  const handleSubmit = e => {
-    e.preventDefault()
-
-    addTask(input, priority, date, getTasks, setError)
-    setInput('')
-    setDate('')
-    setPriority('')
-  }
 
   const showAddTask = () => {
     addForm.current.style.zIndex = '1'
@@ -38,7 +22,7 @@ const Header = () => {
 
   return (
     <>
-      <AddTask addForm={addForm} />
+      <CreateTodo addForm={addForm} />
 
       <div className='header'>
         <div className='header__image__progress'>

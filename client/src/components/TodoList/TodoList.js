@@ -8,9 +8,9 @@ import { updateComplete } from '../../hooks/useUpdateComplete'
 import { deleteTask } from '../../hooks/useDeleteTask'
 
 // Components
-import EditTask from '../EditTask/EditTask'
+import EditTodo from '../EditTodo/EditTodo'
 
-const TaskList = ({ tasks }) => {
+const TodoList = ({ tasks }) => {
   const {
     getTasks,
     setError,
@@ -19,6 +19,7 @@ const TaskList = ({ tasks }) => {
     setTaskCompleted,
     setTaskPriority,
     setTaskDate,
+    setTaskDescription,
     error
   } = useTaskContext()
 
@@ -30,12 +31,13 @@ const TaskList = ({ tasks }) => {
     if (value === 'high') return 'red'
   }
 
-  const showEdit = (id, name, completed, priority, date) => {
+  const showEdit = (id, name, completed, priority, date, description) => {
     setTaskId(id)
     setTaskName(name)
     setTaskCompleted(completed)
     setTaskPriority(priority)
     setTaskDate(date)
+    setTaskDescription(description)
 
     editTask.current.style.zIndex = '1'
     editTask.current.style.transform = 'scale(1)'
@@ -45,7 +47,7 @@ const TaskList = ({ tasks }) => {
     <>
       {error && <h4 className='error'>{error}</h4>}
 
-      <EditTask editTask={editTask} />
+      <EditTodo editTask={editTask} />
 
       <div className='task__list'>
         {tasks.map(task => (
@@ -82,7 +84,7 @@ const TaskList = ({ tasks }) => {
                   </span>
                 )}
 
-                <i class='fa-solid fa-circle-info fa-2x info'></i>
+                <i className='fa-solid fa-circle-info fa-2x info'></i>
 
                 <i
                   className='fa-solid fa-pen-to-square edit'
@@ -92,7 +94,8 @@ const TaskList = ({ tasks }) => {
                       task.task_name,
                       task.is_completed,
                       task.task_priority,
-                      task.added_date.substring(0, 10)
+                      task.added_date.substring(0, 10),
+                      task.task_description
                     )
                   }
                 ></i>
@@ -113,72 +116,8 @@ const TaskList = ({ tasks }) => {
           </div>
         ))}
       </div>
-
-      {/*<div className='task-list'>
-        {tasks.map(task => (
-          <div key={task._id} className='task-list__task'>
-            <div className='one'>
-              {!task.is_completed && (
-                <span className='pending'>
-                  <i
-                    className='fa-regular fa-circle fa-2x'
-                    onClick={() =>
-                      updateComplete(task._id, getTasks, setError, true)
-                    }
-                  ></i>
-                </span>
-              )}
-
-              {task.is_completed && (
-                <span className='completed'>
-                  <i
-                    className='fa-solid fa-circle-check fa-2x'
-                    onClick={() =>
-                      updateComplete(task._id, getTasks, setError, false)
-                    }
-                  ></i>
-                </span>
-              )}
-
-              <span className={`${getClass(task.task_priority)} priority`}>
-                {task.task_priority}
-              </span>
-
-              <span className='name'>{task.task_name}</span>
-            </div>
-
-            <div className='two'>
-              <span className='date'>
-                {task.added_date.substring(8, 10) +
-                  '-' +
-                  task.added_date.substring(5, 7) +
-                  '-' +
-                  task.added_date.substring(0, 4)}
-              </span>
-
-              <i
-                className='fa-solid fa-pen-to-square edit'
-                onClick={() =>
-                  showEdit(
-                    task._id,
-                    task.task_name,
-                    task.is_completed,
-                    task.task_priority,
-                    task.added_date.substring(0, 10)
-                  )
-                }
-              ></i>
-
-              <i
-                className='fa-solid fa-trash-can delete'
-                onClick={() => deleteTask(task._id, getTasks, setError)}
-              ></i>
-            </div>
-          </div>
-              ))}
-              </div>*/}
     </>
   )
 }
 
-export default TaskList
+export default TodoList

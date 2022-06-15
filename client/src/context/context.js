@@ -17,6 +17,7 @@ const AppProvider = ({ children }) => {
   const [taskCompleted, setTaskCompleted] = useState(false)
   const [taskPriority, setTaskPriority] = useState('')
   const [taskDate, setTaskDate] = useState('')
+  const [taskDescription, setTaskDescription] = useState('')
 
   const getTasks = async () => {
     setLoading(true)
@@ -113,7 +114,9 @@ const AppProvider = ({ children }) => {
         pending,
         setPending,
         upcoming,
-        setUpcoming
+        setUpcoming,
+        taskDescription,
+        setTaskDescription
       }}
     >
       {children}

@@ -5,7 +5,7 @@ import { useTaskContext } from '../../context/context'
 
 // components
 import Header from '../../components/Header/Header'
-import TaskList from '../../components/TaskList/TaskList'
+import TodoList from '../../components/TodoList/TodoList'
 
 const Home = () => {
   const { tasks } = useTaskContext()
@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <div className='home'>
       <Header />
-      <TaskList tasks={tasks} />
+      <TodoList tasks={tasks} />
     </div>
   )
 }

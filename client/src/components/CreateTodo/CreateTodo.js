@@ -6,7 +6,7 @@ import { useTaskContext } from '../../context/context'
 // Hooks
 import { addTask } from '../../hooks/useAddTask'
 
-const AddTask = ({ addForm }) => {
+const CreateTodo = ({ addForm }) => {
   const [input, setInput] = useState('')
   const [date, setDate] = useState('')
   const [priority, setPriority] = useState('')
@@ -32,68 +32,75 @@ const AddTask = ({ addForm }) => {
   }
 
   return (
-    <div ref={addForm} className='add-todo'>
+    <div ref={addForm} className='create__todo'>
       <i
-        className='fa-solid fa-xmark fa-3x edit-task__inner-close'
+        className='fa-solid fa-xmark fa-3x create__todo-close'
         onClick={hideEdit}
       ></i>
       <form onSubmit={e => handleSubmit(e)}>
-        <div className='todo-input'>
+        <h2>Add Todo</h2>
+        <div className='create__todo__input'>
           <label htmlFor='input'>Name</label>
 
           <input
             id='input'
             type='text'
             className='input'
-            placeholder='Add todo...'
+            placeholder='Max 20 characters'
             onChange={e => setInput(e.target.value)}
             value={input}
           />
         </div>
 
-        <div>
-          <input
-            type='checkbox'
-            id='low'
-            value='low'
-            onClick={e => setPriority(e.target.value)}
-          />
-          <label htmlFor='low'>Low</label>
-          <input
-            type='checkbox'
-            id='medium'
-            value='medium'
-            onClick={e => setPriority(e.target.value)}
-          />
-          <label htmlFor='medium'>Medium</label>
-          <input
-            type='checkbox'
-            id='high'
-            value='high'
-            onClick={e => setPriority(e.target.value)}
-          />
-          <label htmlFor='high'>High</label>
-        </div>
-
-        <div>
+        <div className='create__todo__description'>
           <label htmlFor='description'>Description</label>
           <textarea
             id='description'
-            rows='4'
+            rows='5'
             cols='50'
             value={description}
+            placeholder='Max 250 characters'
             onChange={e => setDescription(e.target.value)}
           ></textarea>
         </div>
 
-        <div>
-          <label htmlFor='description' id='date'>
+        <div className='create__todo__date'>
+          <label htmlFor='date' id='date'>
             Date
           </label>
           <input type='date' onSelect={e => setDate(e.target.value)} />
         </div>
 
-        <div>
+        <div className='create__todo__priority'>
+          <input
+            name='priority'
+            type='radio'
+            id='low'
+            value='Low'
+            onClick={e => setPriority(e.target.value)}
+          />
+          <label htmlFor='low'>Low</label>
+
+          <input
+            name='priority'
+            type='radio'
+            id='medium'
+            value='Medium'
+            onClick={e => setPriority(e.target.value)}
+          />
+          <label htmlFor='medium'>Medium</label>
+
+          <input
+            name='priority'
+            type='radio'
+            id='high'
+            value='High'
+            onClick={e => setPriority(e.target.value)}
+          />
+          <label htmlFor='high'>High</label>
+        </div>
+
+        <div className='create__todo__submit'>
           <button type='submit' onSubmit={e => handleSubmit(e)}>
             Submit
           </button>
@@ -103,4 +110,4 @@ const AddTask = ({ addForm }) => {
   )
 }
 
-export default AddTask
+export default CreateTodo
