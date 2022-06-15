@@ -20,7 +20,7 @@ const Header = () => {
 
   const { getTasks, setError, tasks, completed } = useTaskContext()
 
-  const addTask = useRef(null)
+  const addForm = useRef(null)
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -32,13 +32,13 @@ const Header = () => {
   }
 
   const showAddTask = () => {
-    addTask.current.style.zIndex = '1'
-    addTask.current.style.transform = 'scale(1)'
+    addForm.current.style.zIndex = '1'
+    addForm.current.style.transform = 'scale(1)'
   }
 
   return (
     <>
-      <AddTask addTask={addTask} />
+      <AddTask addForm={addForm} />
 
       <div className='header'>
         <div className='header__image__progress'>

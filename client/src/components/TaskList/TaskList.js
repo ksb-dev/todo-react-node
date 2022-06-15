@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 
 // Context
 import { useTaskContext } from '../../context/context'
@@ -47,7 +47,72 @@ const TaskList = ({ tasks }) => {
 
       <EditTask editTask={editTask} />
 
-      <div className='task-list'>
+      <div className='task__list'>
+        {tasks.map(task => (
+          <div key={task._id} className='task__list__task'>
+            <div className='one'>
+              <span className='date'>
+                {task.added_date.substring(8, 10) +
+                  '-' +
+                  task.added_date.substring(5, 7) +
+                  '-' +
+                  task.added_date.substring(0, 4)}
+              </span>
+
+              <div className='one__inner'>
+                {!task.is_completed && (
+                  <span className='pending'>
+                    <i
+                      className='fa-regular fa-circle fa-2x'
+                      onClick={() =>
+                        updateComplete(task._id, getTasks, setError, true)
+                      }
+                    ></i>
+                  </span>
+                )}
+
+                {task.is_completed && (
+                  <span className='completed'>
+                    <i
+                      className='fa-solid fa-circle-check fa-2x'
+                      onClick={() =>
+                        updateComplete(task._id, getTasks, setError, false)
+                      }
+                    ></i>
+                  </span>
+                )}
+
+                <i
+                  className='fa-solid fa-pen-to-square edit'
+                  onClick={() =>
+                    showEdit(
+                      task._id,
+                      task.task_name,
+                      task.is_completed,
+                      task.task_priority,
+                      task.added_date.substring(0, 10)
+                    )
+                  }
+                ></i>
+
+                <i
+                  className='fa-solid fa-trash-can delete'
+                  onClick={() => deleteTask(task._id, getTasks, setError)}
+                ></i>
+              </div>
+            </div>
+
+            <div className='two'>
+              <span className={`${getClass(task.task_priority)} priority`}>
+                {task.task_priority}
+              </span>
+              <span className='name'>{task.task_name}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/*<div className='task-list'>
         {tasks.map(task => (
           <div key={task._id} className='task-list__task'>
             <div className='one'>
@@ -108,75 +173,8 @@ const TaskList = ({ tasks }) => {
               ></i>
             </div>
           </div>
-        ))}
-      </div>
-
-      {/*<div className='task-list'>
-        {tasks.map(task => (
-          <div key={task._id} className='task-list__task'>
-            <div className='one'>
-              {!task.is_completed && (
-                <span className='pending'>
-                  <i
-                    className='fa-regular fa-square'
-                    onClick={() =>
-                      updateComplete(task._id, getTasks, setError, true)
-                    }
-                  ></i>
-                </span>
-              )}
-
-              {task.is_completed && (
-                <span className='completed'>
-                  <i
-                    className='fa-solid fa-square-check'
-                    onClick={() =>
-                      updateComplete(task._id, getTasks, setError, false)
-                    }
-                  ></i>
-                </span>
-              )}
-
-              <span className={`${getClass(task.task_priority)} priority`}>
-                {task.task_priority}
-              </span>
-            </div>
-
-            <div className='second'>
-              <span className='name'>{task.task_name}</span>
-            </div>
-
-            <div className='third'>
-              <span className='date'>
-                {task.added_date.substring(8, 10) +
-                  '-' +
-                  task.added_date.substring(5, 7) +
-                  '-' +
-                  task.added_date.substring(0, 4)}
-              </span>
-
-              <div className='third__inner'>
-                <i
-                  className='fa-solid fa-pen-to-square edit'
-                  onClick={() =>
-                    showEdit(
-                      task._id,
-                      task.task_name,
-                      task.is_completed,
-                      task.task_priority,
-                      task.added_date.substring(0, 10)
-                    )
-                  }
-                ></i>
-                <i
-                  className='fa-solid fa-trash-can delete'
-                  onClick={() => deleteTask(task._id, getTasks, setError)}
-                ></i>
-              </div>
-            </div>
-          </div>
-        ))}
-                </div>*/}
+              ))}
+              </div>*/}
     </>
   )
 }

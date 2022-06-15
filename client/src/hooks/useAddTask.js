@@ -1,6 +1,14 @@
 import axios from 'axios'
 
-export const addTask = async (name, priority, date, getTasks, setError) => {
+export const addTask = async (
+  name,
+  priority,
+  description,
+  date,
+  getTasks,
+  setError,
+  addForm
+) => {
   window.scroll({
     bottom: 0,
     left: 0,
@@ -10,16 +18,24 @@ export const addTask = async (name, priority, date, getTasks, setError) => {
   try {
     const response = await axios.post('/api/v1/tasks', {
       task_name: name,
-      added_date: date,
-      task_priority: priority
+      task_description: description,
+      task_priority: priority,
+      added_date: date
     })
 
     if (response.data) {
+      addForm.current.style.zIndex = '-1'
+      addForm.current.style.transform = 'scale(0)'
+
       setError('')
       getTasks()
     }
   } catch (error) {
-    setError(error.response.data.msg.substring(35))
+    setError(
+      error.response.data.msg.substring(35, 61) +
+        ',' +
+        error.response.data.msg.substring(80)
+    )
 
     setTimeout(() => {
       setError('')
