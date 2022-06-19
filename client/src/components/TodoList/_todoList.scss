@@ -13,7 +13,7 @@
 }
 
 .task__list {
-  padding-top: 25rem;
+  padding-top: 2rem;
   max-width: 1280px;
   margin-bottom: 5rem;
 
@@ -29,26 +29,41 @@
     align-items: center;
     justify-content: center;
 
-    background: #fff;
     margin: 1rem;
     padding: 1rem;
     border-radius: var(--border-radius);
+    background: var(--tertiary);
     transition: var(--transition);
-    box-shadow: 5px 5px 5px var(--primary);
 
     .one {
       width: 92%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: var(--primary);
+      background: var(--secondary);
       padding: 1rem;
       overflow: hidden;
       border-radius: var(--border-radius);
 
+      .pending i,
+      .completed i {
+        color: green;
+        cursor: pointer;
+        transition: var(--transition);
+        padding: 0;
+        margin-right: 1rem;
+        font-size: 1.5rem;
+      }
+
+      .pending i:hover,
+      .completed i:hover {
+        text-shadow: 0 0 5px green;
+      }
+
       .date {
-        color: #fff;
+        color: #000;
         padding: 0.5rem 0;
+        margin: 0;
         margin-right: 1rem;
         display: inline-block;
         text-align: center;
@@ -64,28 +79,15 @@
         align-items: center;
         justify-content: center;
 
-        .pending i,
-        .completed i {
-          color: greenyellow;
-          cursor: pointer;
-          transition: var(--transition);
-          padding: 0;
-        }
-
-        .pending i:hover,
-        .completed i:hover {
-          text-shadow: 0 0 5px greenyellow;
-        }
-
         .info {
-          color: #fff;
+          color: gray;
           margin-left: 1rem;
           cursor: pointer;
           transition: var(--transition);
         }
 
         .info:hover {
-          text-shadow: 0 0 5px #fff;
+          text-shadow: 0 0 5px gray;
         }
 
         .edit,
@@ -135,7 +137,6 @@
         text-align: center;
         border-radius: var(--border-radius);
         pointer-events: none;
-        box-shadow: 2px 2px 2px var(--primary);
       }
 
       .name {
@@ -144,14 +145,14 @@
         letter-spacing: 1px;
         font-weight: 500;
         border-radius: 50px;
-        color: var(--primary);
+        color: #000;
         pointer-events: none;
       }
     }
   }
 
   &__task:hover {
-    background: rgb(220, 220, 220);
+    box-shadow: var(--box-shadow);
   }
 }
 

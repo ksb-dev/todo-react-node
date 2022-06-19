@@ -1,17 +1,20 @@
-.header {
+.outer {
   position: fixed;
-  max-width: 1280px;
+  top: 0;
+  z-index: 1;
+}
+
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding-top: 2rem;
-  background: var(--primary);
+  background: var(--primary-alpha);
   color: var(--secondary);
   border-radius: 3px;
-  border-top: 10px solid var(--secondary);
 
-  &__image__progress {
+  &__image__progress__btn {
     width: 100%;
     display: flex;
     flex-direction: row-reverse;
@@ -21,6 +24,29 @@
 
     h1 {
       letter-spacing: 2px;
+      color: var(--primary);
+      text-shadow: 0 0 20px var(--secondary);
+      animation: blink 3s infinite ease;
+    }
+
+    .createBtn {
+      font-family: inherit;
+      border: none;
+      outline: none;
+      padding: 0.65rem;
+      border-radius: var(--border-radius);
+      background: #000;
+      color: var(--secondary);
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 1rem;
+    }
+
+    .createBtn:hover {
+      box-shadow: 0 0 20px var(--secondary);
     }
 
     div {
@@ -33,90 +59,11 @@
         height: 100px;
         border-radius: 50%;
         margin-right: 2rem;
-        box-shadow: 0 0 5px var(--secondary);
+        box-shadow: 0 0 20px var(--secondary);
       }
 
       h2 {
-        color: var(--primary);
-        text-shadow: 0 0 20px var(--secondary);
-        animation: blink 3s infinite ease;
-      }
-    }
-  }
-
-  &__create_filter {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin: 2rem 0 2rem 0;
-
-    .createBtn {
-      font-family: inherit;
-      border: none;
-      outline: none;
-      padding: 0.65rem;
-      border-radius: var(--border-radius);
-      background: var(--secondary);
-      color: var(--primary);
-      font-weight: 500;
-      letter-spacing: 1px;
-      text-transform: capitalize;
-      cursor: pointer;
-      transition: var(--transition);
-      font-size: 1rem;
-    }
-
-    .createBtn:hover {
-      background: var(--hover);
-    }
-
-    .filter-box {
-      position: relative;
-
-      .input {
-        width: 300px;
-        padding: 0.75rem;
-        border: none;
-        border-radius: 3px;
-      }
-
-      .input:focus {
-        outline: none;
-        box-shadow: 0 0 10px var(--secondary);
-      }
-
-      .input:focus::placeholder {
-        color: transparent;
-      }
-
-      .filterBtn {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 0;
-        padding: 0 1rem;
-        background: var(--secondary);
-        color: var(--primary);
-        height: 100%;
-        width: 20px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px;
-
-        span {
-          position: absolute;
-          display: inline-block;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-size: 1.2rem;
-        }
-      }
-
-      .filterBtn:hover {
-        background: var(--hover);
+        color: var(--secondary);
       }
     }
   }
@@ -168,7 +115,7 @@
   80%,
   90.1%,
   92% {
-    color: #0e3742;
+    color: var(--primary);
     /*text-shadow: none;*/
   }
   18.1%,

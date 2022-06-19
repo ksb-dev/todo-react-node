@@ -1,13 +1,6 @@
 import axios from 'axios'
 
-export const addTask = async (
-  name,
-  priority,
-  description,
-  date,
-  getTasks,
-  setError
-) => {
+export const getTask = async (id, setError, getTasks) => {
   window.scroll({
     bottom: 0,
     left: 0,
@@ -15,19 +8,14 @@ export const addTask = async (
   })
 
   try {
-    const response = await axios.post('/api/v1/tasks', {
-      task_name: name,
-      task_description: description,
-      task_priority: priority,
-      added_date: date
-    })
+    const response = await axios.get(`/api/v1/tasks/${id}`, {})
 
     if (response.data) {
       setError('')
       getTasks()
     }
 
-    return response.data
+    return response.data.task
   } catch (error) {
     setError(
       error.response.data.msg.substring(35, 61) +

@@ -12,12 +12,10 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false)
   const [category, setCategory] = useState('all')
 
-  const [taskId, setTaskId] = useState('')
-  const [taskName, setTaskName] = useState('')
-  const [taskCompleted, setTaskCompleted] = useState(false)
-  const [taskPriority, setTaskPriority] = useState('')
-  const [taskDate, setTaskDate] = useState('')
-  const [taskDescription, setTaskDescription] = useState('')
+  const [filteredTasks, setFilteredTasks] = useState([])
+  const [filteredPending, setFilteredPending] = useState([])
+  const [filteredCompleted, setFilteredCompleted] = useState([])
+  const [filteredUpcoming, setFilteredUpcoming] = useState([])
 
   const getTasks = async () => {
     setLoading(true)
@@ -28,6 +26,7 @@ const AppProvider = ({ children }) => {
       if (response.data.tasks) {
         // All Tasks
         setTasks(response.data.tasks)
+        setFilteredTasks(response.data.tasks)
 
         // Complteted Tasks
         const completedTasks = response.data.tasks.filter(
@@ -35,6 +34,7 @@ const AppProvider = ({ children }) => {
         )
 
         setCompleted(completedTasks)
+        setFilteredCompleted(completedTasks)
 
         // Pending Tasks
         const pendingTasks = response.data.tasks.filter(
@@ -42,6 +42,7 @@ const AppProvider = ({ children }) => {
         )
 
         setPending(pendingTasks)
+        setFilteredPending(pendingTasks)
 
         // Upcoming Tasks
         const upcomingTasks = response.data.tasks.filter(task => {
@@ -68,6 +69,7 @@ const AppProvider = ({ children }) => {
         })
 
         setUpcoming(upcomingTasks)
+        setFilteredUpcoming(upcomingTasks)
 
         setLoading(false)
         setError('')
@@ -99,24 +101,20 @@ const AppProvider = ({ children }) => {
         setLoading,
         category,
         setCategory,
-        taskId,
-        setTaskId,
-        taskName,
-        setTaskName,
-        taskCompleted,
-        setTaskCompleted,
-        taskPriority,
-        setTaskPriority,
-        taskDate,
-        setTaskDate,
         completed,
         setCompleted,
         pending,
         setPending,
         upcoming,
         setUpcoming,
-        taskDescription,
-        setTaskDescription
+        filteredTasks,
+        setFilteredTasks,
+        filteredPending,
+        setFilteredPending,
+        filteredCompleted,
+        setFilteredCompleted,
+        filteredUpcoming,
+        setFilteredUpcoming
       }}
     >
       {children}

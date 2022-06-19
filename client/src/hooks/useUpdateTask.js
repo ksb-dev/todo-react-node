@@ -5,9 +5,9 @@ export const updateTask = async (
   getTasks,
   setError,
   input,
+  description,
   priority,
-  date,
-  editTask
+  date
 ) => {
   window.scroll({
     bottom: 0,
@@ -18,6 +18,7 @@ export const updateTask = async (
   try {
     let response = await axios.patch(`/api/v1/tasks/${id}`, {
       task_name: input,
+      task_description: description,
       task_priority: priority,
       added_date: date
     })
@@ -25,9 +26,9 @@ export const updateTask = async (
     if (response.data) {
       setError('')
       getTasks()
-      editTask.current.style.zIndex = '-1'
-      editTask.current.style.transform = 'scale(0)'
     }
+
+    return response.data
   } catch (error) {
     setError(error.response.data.msg)
 

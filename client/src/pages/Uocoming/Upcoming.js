@@ -8,12 +8,16 @@ import Header from '../../components/Header/Header'
 import TodoList from '../../components/TodoList/TodoList'
 
 const Upcoming = () => {
-  const { upcoming } = useTaskContext()
+  const { upcoming, filteredUpcoming, setFilteredUpcoming } = useTaskContext()
 
   return (
     <div className='home'>
       <Header />
-      <TodoList tasks={upcoming} />
+      <TodoList
+        tasks={upcoming}
+        filtered={filteredUpcoming}
+        setTasks={setFilteredUpcoming}
+      />
     </div>
   )
 }

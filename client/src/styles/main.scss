@@ -1,23 +1,27 @@
-@import '../Pages/Home/home';
 @import '../components/Header/header';
-@import '../components/Navigation/Navigation.scss';
+@import '../components/Navigation/_navigation.scss';
 @import '../components/TodoList/todoList';
-@import '../components/EditTodo/editTodo';
-@import '../components/CreateTodo/createTodo';
+@import '../components/Filter/filter';
+
+@import '../Pages/Home/home';
+@import '../pages//CreateTodo/createTodo';
+@import '../pages/EditTodo/editTodo';
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
 
 :root {
-  --primary: #0d253f;
-  --secondary: #90cea1;
+  --primary: #4285f4;
+  --secondary: #fff;
+  --tertiary: rgb(220, 220, 220);
+  --blue: #4285f4;
+  --green: #0f9d58;
 
-  --primary-alpha: rgba(13, 37, 63, 0.95);
+  --primary-alpha: rgba(66, 133, 244, 0.95);
   --secondary-alpha: rgba(144, 206, 161, 0.95);
 
-  --hover: #75b386;
-  --hover1: #143961;
+  --hover1: #005ff8;
 
-  --box-shadow: 0 0 10px #90cea1;
+  --box-shadow: 0 0 5px var(--primary);
 
   --border-radius: 3px;
 

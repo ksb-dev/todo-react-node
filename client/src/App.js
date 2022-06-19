@@ -6,6 +6,8 @@ import Home from './pages/Home/Home'
 import Completed from './pages/Completed/Completed'
 import Pending from './pages/Pending/Pending'
 import Upcoming from './pages/Uocoming/Upcoming'
+import CreateTodo from './pages/CreateTodo/CreateTodo'
+import EditTodo from './pages/EditTodo/EditTodo'
 
 // Styles
 import './styles/main.scss'
@@ -22,6 +24,10 @@ const App = () => {
           <Route exact path='/pending' element={<Pending />} />
 
           <Route exact path='/upcoming' element={<Upcoming />} />
+
+          <Route exact path='/create' element={<CreateTodo />} />
+
+          <Route exact path='/edit/:id' element={<EditTodo />} />
         </Routes>
       </BrowserRouter>
     </div>

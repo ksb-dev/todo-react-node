@@ -8,12 +8,20 @@ import Header from '../../components/Header/Header'
 import TodoList from '../../components/TodoList/TodoList'
 
 const Completed = () => {
-  const { completed } = useTaskContext()
+  const {
+    completed,
+    filteredCompleted,
+    setFilteredCompleted
+  } = useTaskContext()
 
   return (
     <div className='home'>
       <Header />
-      <TodoList tasks={completed} />
+      <TodoList
+        tasks={completed}
+        filtered={filteredCompleted}
+        setTasks={setFilteredCompleted}
+      />
     </div>
   )
 }
