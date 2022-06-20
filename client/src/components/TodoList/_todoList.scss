@@ -87,7 +87,7 @@
         }
 
         .info:hover {
-          text-shadow: 0 0 5px gray;
+          text-shadow: 0 0 2px gray;
         }
 
         .edit,
@@ -152,7 +152,13 @@
   }
 
   &__task:hover {
-    box-shadow: var(--box-shadow);
+    background: var(--primary);
+
+    .two {
+      .name {
+        color: var(--secondary);
+      }
+    }
   }
 }
 

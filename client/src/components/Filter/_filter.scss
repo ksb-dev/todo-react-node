@@ -7,16 +7,20 @@
     display: block;
     width: 300px;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 15px;
     border: none;
     border-radius: 3px;
     background: var(--tertiary);
-    color: var(--primary);
+    color: gray;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 1rem;
   }
 
   .input:focus {
     outline: none;
-    box-shadow: var(--box-shadow);
+    padding: 13px;
+    border: 2px solid var(--primary);
   }
 
   .input:focus::placeholder {
@@ -51,8 +55,4 @@
   .filterBtn:hover {
     box-shadow: var(--box-shadow);
   }
-}
-
-::placeholder {
-  color: var(--primary);
 }
