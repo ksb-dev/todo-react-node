@@ -34,13 +34,13 @@
   form {
     margin-top: 1rem;
     width: 400px;
-    background: var(--primary);
     padding: 2rem;
     padding-top: 1rem;
     border-radius: var(--border-radius);
-    color: var(--secondary);
+    color: #fff;
     letter-spacing: 1px;
     font-weight: 500;
+    background: var(--primary);
   }
 
   &__input,
@@ -62,13 +62,12 @@
       letter-spacing: 1px;
       font-weight: 500;
       font-family: inherit;
-      color: gray;
+      color: black;
     }
 
     .input:focus {
       outline: none;
-      padding: 13px;
-      border: 2px solid #000;
+      box-shadow: 0 0 5px #000;
     }
 
     .input:focus::placeholder {
@@ -86,13 +85,12 @@
       font-weight: 500;
       font-family: inherit;
       padding: 15px;
-      color: gray;
+      color: black;
     }
 
     textarea:focus {
       outline: none;
-      padding: 13px;
-      border: 2px solid #000;
+      box-shadow: 0 0 5px #000;
     }
 
     textarea:focus::placeholder {
@@ -111,13 +109,12 @@
       letter-spacing: 1px;
       font-weight: 500;
       width: 130px;
-      color: gray;
+      color: black;
     }
 
     input:focus {
       outline: none;
-      padding: 13px;
-      border: 2px solid #000;
+      box-shadow: 0 0 5px #000;
     }
   }
 
@@ -133,13 +130,12 @@
       letter-spacing: 1px;
       font-weight: 500;
       font-family: inherit;
-      color: gray;
+      color: black;
     }
 
     input:focus {
       outline: none;
-      padding: 13px;
-      border: 2px solid #000;
+      box-shadow: 0 0 5px #000;
     }
   }
 

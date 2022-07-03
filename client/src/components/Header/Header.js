@@ -8,11 +8,11 @@ import { useTaskContext } from '../../context/context'
 import Navigation from '../Navigation/Navigation'
 
 // Images
-import user from '../../img/user.png'
+import userImg from '../../img/user.png'
 import task from '../../img/task.jpg'
 
 const Header = () => {
-  const { tasks, completed } = useTaskContext()
+  const { tasks, completed, user } = useTaskContext()
 
   return (
     <div
@@ -22,13 +22,21 @@ const Header = () => {
       <div className='header'>
         <div className='header__image__progress__btn'>
           <h1>Taskivity</h1>
-          <Link to='/create'>
-            <button className='createBtn'>
-              create task <i className='fa-solid fa-plus'></i>
-            </button>
-          </Link>
+          {!user && (
+            <Link to='/login'>
+              <button className='createBtn'>Login</button>
+            </Link>
+          )}
+
+          {user && (
+            <Link to='/create'>
+              <button className='createBtn'>
+                create task <i className='fa-solid fa-plus'></i>
+              </button>
+            </Link>
+          )}
           <div>
-            <img src={user} alt='user' />
+            <img src={userImg} alt='user' />
             <h2>
               {completed.length > 0
                 ? ((completed.length / tasks.length) * 100).toFixed(1) + '%'

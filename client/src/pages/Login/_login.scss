@@ -1,0 +1,115 @@
+.login {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__backBtn {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+    margin-bottom: 2rem;
+    color: #000;
+
+    i {
+      margin-right: 0.5rem;
+    }
+  }
+
+  &__form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem;
+    border-radius: 5px;
+    border-radius: var(--border-radius);
+    color: var(--secondary);
+    background: var(--primary);
+
+    h3 {
+      margin: 0;
+      letter-spacing: 1px;
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    div {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      i {
+        margin-bottom: -1.8rem;
+        cursor: pointer;
+      }
+    }
+
+    p {
+      text-transform: capitalize;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      font-weight: 400;
+      margin: 1rem 0 0.5rem 0;
+    }
+
+    input {
+      width: 95%;
+      padding: 0.7rem 0.5rem;
+      border: none;
+      border-radius: 5px;
+      color: gray;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 5px #000;
+    }
+
+    .ask {
+      text-transform: none;
+
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
+    }
+
+    button {
+      margin-top: 1.5rem;
+      border: none;
+      outline: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      text-transform: capitalize;
+      letter-spacing: 1px;
+      font-family: inherit;
+      font-weight: 500;
+      font-size: 0.9rem;
+      background: #000;
+      color: var(--secondary);
+      transition: var(--transition);
+    }
+
+    button:hover {
+      background: rgb(60, 60, 60);
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .login {
+    &__form {
+      width: 250px;
+    }
+  }
+}

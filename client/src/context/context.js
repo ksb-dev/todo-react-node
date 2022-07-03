@@ -17,11 +17,21 @@ const AppProvider = ({ children }) => {
   const [filteredCompleted, setFilteredCompleted] = useState([])
   const [filteredUpcoming, setFilteredUpcoming] = useState([])
 
+  const [user, setUser] = useState('')
+  const [token, setToken] = useState('')
+
   const getTasks = async () => {
+    const userToken = localStorage.getItem('token')
+    setToken(token)
+
     setLoading(true)
 
     try {
-      const response = await axios.get('/api/v1/tasks')
+      const response = await axios.get('http://127.0.0.1:5000/api/v1/tasks', {
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        }
+      })
 
       if (response.data.tasks) {
         // All Tasks
@@ -86,7 +96,13 @@ const AppProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    getTasks()
+    // Get user
+    const userName = localStorage.getItem('name')
+    setUser(userName)
+
+    if (userName) {
+      getTasks()
+    }
   }, [])
 
   return (
@@ -114,7 +130,11 @@ const AppProvider = ({ children }) => {
         filteredCompleted,
         setFilteredCompleted,
         filteredUpcoming,
-        setFilteredUpcoming
+        setFilteredUpcoming,
+        user,
+        setUser,
+        token,
+        setToken
       }}
     >
       {children}

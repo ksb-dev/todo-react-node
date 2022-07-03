@@ -18,14 +18,16 @@ const EditTodo = () => {
   const [date, setDate] = useState('')
   const [description, setDescription] = useState('')
 
-  const getSingleTask = useCallback(async () => {
-    const response = await getTask(params.id, setError, getTasks)
+  const getSingleTask = async token => {
+    const response = await getTask(params.id, setError, getTasks, token)
 
-    setName(response.task_name)
-    setDescription(response.task_description)
-    setPriority(response.task_priority)
-    setDate(response.added_date.substring(0, 10))
-  }, [getTasks, params.id, setError])
+    if (response) {
+      setName(response.task_name)
+      setDescription(response.task_description)
+      setPriority(response.task_priority)
+      setDate(response.added_date.substring(0, 10))
+    }
+  }
 
   useEffect(() => {
     getSingleTask()
@@ -81,7 +83,7 @@ const EditTodo = () => {
           </div>
 
           <div className='edit__todo__priority'>
-            <label htmlFor='priority'>Priority</label>
+            <label htmlFor='priority'>Priority (low, medium, high)</label>
 
             <input
               id='priority'
@@ -94,7 +96,7 @@ const EditTodo = () => {
           </div>
 
           <div className='edit__todo__date'>
-            <label htmlFor='date'>Date</label>
+            <label htmlFor='date'>Date (yyyy-mm-dd)</label>
 
             <input
               id='date'

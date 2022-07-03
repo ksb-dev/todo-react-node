@@ -15,16 +15,19 @@ app.use(cors())
 // Custom middleware for connecting database
 const connect = require('./DB/connect')
 
-// Custom middleware for routes
+// Authentication middleware
+const authenticateUser = require('./middleware/authentication')
+
+// Rotes
 const tasks = require('./routes/tasksRoute')
+const authRouter = require('./routes/auth')
 
-// Custom not found middleware
+// Error handler
 const notFound = require('./middleware/notFound')
-
-// Custom error handler middleware
 const errorHandler = require('./middleware/errorHandler')
 
-app.use('/api/v1/tasks', tasks)
+app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/tasks', authenticateUser, tasks)
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '/client/build')))
@@ -41,7 +44,7 @@ if (process.env.NODE_ENV === 'production') {
 app.use(notFound)
 app.use(errorHandler)
 
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 5000
 
 const start = async () => {
   try {

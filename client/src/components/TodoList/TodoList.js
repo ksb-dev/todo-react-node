@@ -15,9 +15,11 @@ const TodoList = ({ tasks, filtered, setTasks }) => {
   const { getTasks, setError, error } = useTaskContext()
 
   const getClass = value => {
-    if (value === 'low') return 'green'
-    if (value === 'medium') return 'orange'
-    if (value === 'high') return 'red'
+    let lowerCaseValue = value.toLowerCase()
+
+    if (lowerCaseValue === 'low') return 'green'
+    if (lowerCaseValue === 'medium') return 'orange'
+    if (lowerCaseValue === 'high') return 'red'
   }
 
   return (

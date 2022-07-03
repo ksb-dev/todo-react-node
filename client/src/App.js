@@ -8,6 +8,8 @@ import Pending from './pages/Pending/Pending'
 import Upcoming from './pages/Uocoming/Upcoming'
 import CreateTodo from './pages/CreateTodo/CreateTodo'
 import EditTodo from './pages/EditTodo/EditTodo'
+import Login from './pages/Login/Login'
+import Signup from './pages/SignUp/SignUp'
 
 // Styles
 import './styles/main.scss'
@@ -28,6 +30,10 @@ const App = () => {
           <Route exact path='/create' element={<CreateTodo />} />
 
           <Route exact path='/edit/:id' element={<EditTodo />} />
+
+          <Route exact path='/login' element={<Login />} />
+
+          <Route exact path='/signup' element={<Signup />} />
         </Routes>
       </BrowserRouter>
     </div>

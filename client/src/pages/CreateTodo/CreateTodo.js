@@ -28,7 +28,9 @@ const CreateTodo = () => {
       setError
     )
 
-    if (response) navigate('/')
+    if (response) {
+      navigate('/')
+    } else return
 
     setInput('')
     setDate('')
@@ -66,7 +68,7 @@ const CreateTodo = () => {
               rows='5'
               cols='50'
               value={description}
-              placeholder='Max 250 characters'
+              placeholder='Description'
               onChange={e => setDescription(e.target.value)}
             ></textarea>
           </div>
