@@ -12,7 +12,39 @@ import userImg from '../../img/user.png'
 import task from '../../img/task.jpg'
 
 const Header = () => {
-  const { tasks, completed, user } = useTaskContext()
+  const {
+    tasks,
+    completed,
+    user,
+    setUser,
+    setToken,
+    setTasks,
+    setPending,
+    setCompleted,
+    setUpcoming,
+    setFilteredTasks,
+    setFilteredPending,
+    setFilteredCompleted,
+    setFilteredUpcoming
+  } = useTaskContext()
+
+  const logout = () => {
+    localStorage.removeItem('name')
+    localStorage.removeItem('token')
+
+    setUser('')
+    setToken('')
+
+    setTasks([])
+    setPending([])
+    setCompleted([])
+    setUpcoming([])
+
+    setFilteredTasks([])
+    setFilteredPending([])
+    setFilteredCompleted([])
+    setFilteredUpcoming([])
+  }
 
   return (
     <div
@@ -22,19 +54,29 @@ const Header = () => {
       <div className='header'>
         <div className='header__image__progress__btn'>
           <h1>Taskivity</h1>
-          {!user && (
-            <Link to='/login'>
-              <button className='createBtn'>Login</button>
-            </Link>
-          )}
 
-          {user && (
-            <Link to='/create'>
-              <button className='createBtn'>
-                create task <i className='fa-solid fa-plus'></i>
-              </button>
-            </Link>
-          )}
+          <div className='create-logout'>
+            {user && (
+              <>
+                <Link to='/create'>
+                  <button className='createBtn'>
+                    create task <i className='fa-solid fa-plus'></i>
+                  </button>
+                </Link>
+
+                <button className='logoutBtn' onClick={() => logout()}>
+                  Logout
+                </button>
+              </>
+            )}
+
+            {!user && (
+              <Link to='/login'>
+                <button className='loginBtn'>Login</button>
+              </Link>
+            )}
+          </div>
+
           <div>
             <img src={userImg} alt='user' />
             <h2>

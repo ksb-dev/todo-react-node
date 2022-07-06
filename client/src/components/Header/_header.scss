@@ -29,26 +29,6 @@
       animation: blink 3s infinite ease;
     }
 
-    .createBtn {
-      font-family: inherit;
-      border: none;
-      outline: none;
-      padding: 0.65rem;
-      border-radius: var(--border-radius);
-      background: #000;
-      color: var(--secondary);
-      font-weight: 500;
-      letter-spacing: 1px;
-      text-transform: capitalize;
-      cursor: pointer;
-      transition: var(--transition);
-      font-size: 1rem;
-    }
-
-    .createBtn:hover {
-      background: rgb(60, 60, 60);
-    }
-
     div {
       display: flex;
       align-items: center;
@@ -64,6 +44,36 @@
 
       h2 {
         color: var(--secondary);
+      }
+    }
+
+    .create-logout {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .createBtn,
+      .logoutBtn,
+      .loginBtn {
+        font-family: inherit;
+        border: none;
+        outline: none;
+        padding: 0.65rem;
+        border-radius: var(--border-radius);
+        background: #000;
+        color: var(--secondary);
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: capitalize;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 1rem;
+        margin: 0.5rem;
+      }
+
+      .createBtn:hover {
+        background: rgb(60, 60, 60);
       }
     }
   }

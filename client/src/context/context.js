@@ -103,7 +103,7 @@ const AppProvider = ({ children }) => {
     if (userName) {
       getTasks()
     }
-  }, [])
+  }, [user])
 
   return (
     <AppContext.Provider
