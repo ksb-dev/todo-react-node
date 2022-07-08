@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useCallback, useContext } from 'react'
 import axios from 'axios'
 
 const AppContext = React.createContext()
@@ -20,14 +20,14 @@ const AppProvider = ({ children }) => {
   const [user, setUser] = useState('')
   const [token, setToken] = useState('')
 
-  const getTasks = async () => {
+  const getTasks = useCallback(async () => {
     const userToken = localStorage.getItem('token')
     setToken(token)
 
     setLoading(true)
 
     try {
-      const response = await axios.get('http://127.0.0.1:5000/api/v1/tasks', {
+      const response = await axios.get('/api/v1/tasks', {
         headers: {
           Authorization: `Bearer ${userToken}`
         }
@@ -93,7 +93,7 @@ const AppProvider = ({ children }) => {
       setLoading(false)
       setError('Failed to fetch tasks!')
     }
-  }
+  }, [token])
 
   useEffect(() => {
     // Get user
@@ -103,7 +103,7 @@ const AppProvider = ({ children }) => {
     if (userName) {
       getTasks()
     }
-  }, [user])
+  }, [user, getTasks])
 
   return (
     <AppContext.Provider
