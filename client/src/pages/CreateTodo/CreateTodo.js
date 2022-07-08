@@ -42,79 +42,82 @@ const CreateTodo = () => {
     <>
       {error && <h4 className='error'>{error}</h4>}
       <div className='create__todo'>
-        <Link to='/' className='edit__todo-back'>
-          <i className='fa-solid fa-left-long'></i>
-          Back
-        </Link>
-        <form onSubmit={e => handleSubmit(e)}>
-          <h2>Create Task</h2>
-          <div className='create__todo__input'>
-            <label htmlFor='input'>Name</label>
+        <div className='create__todo__inner'>
+          <Link to='/' className='create__todo__inner-back'>
+            <i className='fa-solid fa-left-long'></i>
+            Back
+          </Link>
 
-            <input
-              id='input'
-              type='text'
-              className='input'
-              placeholder='Max 20 characters'
-              onChange={e => setInput(e.target.value)}
-              value={input}
-            />
-          </div>
+          <form onSubmit={e => handleSubmit(e)}>
+            <h2>Create Task</h2>
+            <div className='create__todo__inner__input'>
+              <label htmlFor='input'>Name</label>
 
-          <div className='create__todo__description'>
-            <label htmlFor='description'>Description</label>
-            <textarea
-              id='description'
-              rows='5'
-              cols='50'
-              value={description}
-              placeholder='Description'
-              onChange={e => setDescription(e.target.value)}
-            ></textarea>
-          </div>
+              <input
+                id='input'
+                type='text'
+                className='input'
+                placeholder='Max 20 characters'
+                onChange={e => setInput(e.target.value)}
+                value={input}
+              />
+            </div>
 
-          <div className='create__todo__date'>
-            <label htmlFor='date' id='date'>
-              Date
-            </label>
-            <input type='date' onSelect={e => setDate(e.target.value)} />
-          </div>
+            <div className='create__todo__inner__description'>
+              <label htmlFor='description'>Description</label>
+              <textarea
+                id='description'
+                rows='5'
+                cols='50'
+                value={description}
+                placeholder='Description'
+                onChange={e => setDescription(e.target.value)}
+              ></textarea>
+            </div>
 
-          <div className='create__todo__priority'>
-            <input
-              name='priority'
-              type='radio'
-              id='low'
-              value='low'
-              onClick={e => setPriority(e.target.value)}
-            />
-            <label htmlFor='low'>Low</label>
+            <div className='create__todo__inner__date'>
+              <label htmlFor='date' id='date'>
+                Date
+              </label>
+              <input type='date' onSelect={e => setDate(e.target.value)} />
+            </div>
 
-            <input
-              name='priority'
-              type='radio'
-              id='medium'
-              value='medium'
-              onClick={e => setPriority(e.target.value)}
-            />
-            <label htmlFor='medium'>Medium</label>
+            <div className='create__todo__inner__priority'>
+              <input
+                name='priority'
+                type='radio'
+                id='low'
+                value='low'
+                onClick={e => setPriority(e.target.value)}
+              />
+              <label htmlFor='low'>Low</label>
 
-            <input
-              name='priority'
-              type='radio'
-              id='high'
-              value='high'
-              onClick={e => setPriority(e.target.value)}
-            />
-            <label htmlFor='high'>High</label>
-          </div>
+              <input
+                name='priority'
+                type='radio'
+                id='medium'
+                value='medium'
+                onClick={e => setPriority(e.target.value)}
+              />
+              <label htmlFor='medium'>Medium</label>
 
-          <div className='create__todo__submit'>
-            <button type='submit' onSubmit={e => handleSubmit(e)}>
-              Submit
-            </button>
-          </div>
-        </form>
+              <input
+                name='priority'
+                type='radio'
+                id='high'
+                value='high'
+                onClick={e => setPriority(e.target.value)}
+              />
+              <label htmlFor='high'>High</label>
+            </div>
+
+            <div className='create__todo__inner__submit'>
+              <button type='submit' onSubmit={e => handleSubmit(e)}>
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   )
