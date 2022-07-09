@@ -57,17 +57,17 @@ const Header = () => {
 
           <div className='create-logout'>
             {user && (
-              <Link to='/create'>
-                <button className='createBtn'>
-                  create task <i className='fa-solid fa-plus'></i>
-                </button>
-              </Link>
-            )}
+              <>
+                <Link to='/create'>
+                  <button className='createBtn'>
+                    create task <i className='fa-solid fa-plus'></i>
+                  </button>
+                </Link>
 
-            {user && (
-              <button className='logoutBtn' onClick={() => logout()}>
-                Logout
-              </button>
+                <button className='logoutBtn' onClick={() => logout()}>
+                  Logout
+                </button>
+              </>
             )}
 
             {!user && (
