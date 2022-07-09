@@ -100,7 +100,9 @@ const AppProvider = ({ children }) => {
     const userName = localStorage.getItem('name')
     setUser(userName)
 
-    if (userName) {
+    console.log(userName)
+
+    if (userName !== null) {
       getTasks()
     }
   }, [user, getTasks])
